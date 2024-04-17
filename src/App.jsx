@@ -1,13 +1,16 @@
-import './css/App.css'
+import './css/index.css'
 import Switch from './Switch';
-import Navigation from './Navigation';
+import Navbar from './comps/Navbar';
+import { Container } from 'react-bootstrap';
 
 function App() {
 
   return (
     <>
-      <Switch />
-      <Navigation />
+    <Navbar />
+      <Container className="mb-4">
+         <Switch />
+      </Container>
     </>
   )
 }

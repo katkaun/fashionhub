@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Registration = () => {
     const [userData, setUserData] = useState({
@@ -14,6 +16,8 @@ const Registration = () => {
     })
 
     const [regMessage, setRegMessage] = useState('');
+    const navigate = useNavigate();
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +39,7 @@ const Registration = () => {
             });
             if (response.ok) {
                 setRegMessage('You are now registered. Please sign in')
-                history.pushState('/login')
+                navigate('/login'); //Gör istället en välkommen sida
             } else {
                 setRegMessage('Registration failed')
             }

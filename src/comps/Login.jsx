@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [loginMessage, setLoginMessage] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const handleUserNameChange = (e) => {
         setUserName(e.target.value);
@@ -16,7 +20,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3000/v1/fashionhub/login', {
+            const response = await fetch('http://localhost:3000/v1/fashionhub/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -29,9 +33,11 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.token);
+                navigate('/');
+                setLoggedIn(true);
+
             } else if (response.status === 400) {
-                console.error('Username or password is incorrect');
+                setLoginMessage('Username or password is incorrect!')
             } else {
                 console.error('Error');
             }
@@ -43,6 +49,8 @@ const Login = () => {
     return (
         <div>
             <h2>Login</h2>
+            {loginMessage && <p>{loginMessage}</p>}
+            {loggedIn && <p>Welcome, {userName}</p>}
             <form onSubmit={handleLogin}>
                 <div>
                     <label htmlFor="userName">Username</label>
@@ -62,6 +70,7 @@ const Login = () => {
                         value={password}
                         onChange={handlePasswordChange}
                         required
+                        autoComplete="off"
                     />
                 </div>
                 <button type="submit">Login</button>
