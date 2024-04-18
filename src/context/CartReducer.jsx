@@ -1,8 +1,14 @@
 import { ADD_TO_CART, REMOVE_ITEM, INCREASE, DECREASE, CHECKOUT, CLEAR } from "./CartTypes"
 
-export const sumItems = (cartItems) => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    
+const Storage = (cartItems) => {
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(cartItems.length > 0 ? cartItems : [])
+    );
+  };
+
+export const sumItems = (cartItems) => { 
+    Storage(cartItems);   
     let itemCount = cartItems.reduce(
         (total, product) => total + product.quantity,0
     )

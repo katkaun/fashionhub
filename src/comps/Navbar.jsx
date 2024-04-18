@@ -1,4 +1,4 @@
-import { Container, Navbar as BootstrapNavbar, Nav, Button, FormControl} from "react-bootstrap"
+import { Container, Navbar as BootstrapNavbar, Nav, FormControl} from "react-bootstrap"
 import { NavLink } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import { useContext } from "react";

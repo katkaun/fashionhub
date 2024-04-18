@@ -1,13 +1,17 @@
 import React, { useReducer } from "react";
 import CartReducer from "./CartReducer";
 import CartContext from "./CartContext";
+import { sumItems } from "./CartReducer";
 
+const storage = localStorage.getItem("cartItems") 
+? JSON.parse(localStorage.getItem("cartItems")):[];
 
 const CartState = ({ children }) => {
     const initialState = {
-        cartItems: [],
+        cartItems: storage,
+        ...sumItems(storage),
         checkout: false,
-        user: null,
+        // user: null,
     };
     const [state, dispatch] = useReducer(CartReducer, initialState);
 
