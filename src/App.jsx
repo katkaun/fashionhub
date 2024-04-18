@@ -2,16 +2,17 @@ import './css/index.css'
 import Switch from './Switch';
 import Navbar from './comps/Navbar';
 import { Container } from 'react-bootstrap';
+import CartState from './context/CartState';
 
 function App() {
 
   return (
-    <>
-    <Navbar />
-      <Container className="mb-4">
+    <CartState>
+      <Navbar />
+        <Container className="mb-4">
          <Switch />
-      </Container>
-    </>
+        </Container>
+    </CartState> 
   )
 }
 

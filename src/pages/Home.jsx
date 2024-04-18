@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ProductItem from "../comps/ProductItem";
+import { Row, Col } from "react-bootstrap"
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -25,11 +26,11 @@ const Home = () => {
     return (
         <div>
             <h2>Products</h2>
-            <div className="product-list">
+            <Row md={3} xs={2} lg={3} className="g-5"> 
                 {products.map(product => (
-                    <ProductItem key={product._id} product={product} />
+                    <Col key={product._id}><ProductItem product={product} /></Col>
                 ))}
-            </div>
+            </Row>  
         </div>
     );
 };
