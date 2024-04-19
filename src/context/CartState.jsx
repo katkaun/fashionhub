@@ -11,7 +11,7 @@ const CartState = ({ children }) => {
         cartItems: storage,
         ...sumItems(storage),
         checkout: false,
-        // user: null,
+        user: null,
     };
     const [state, dispatch] = useReducer(CartReducer, initialState);
 

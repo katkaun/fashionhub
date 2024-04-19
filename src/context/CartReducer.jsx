@@ -44,12 +44,14 @@ const CartReducer = ( state, action) => {
             state.cartItems[state.cartItems.findIndex((item) => item._id === action.payload._id)].quantity++;
             return {
                 ...state,
+                ...sumItems(state.cartItems),
                 cartItems: [...state.cartItems],
             }
         case DECREASE:
             state.cartItems[state.cartItems.findIndex((item) => item._id === action.payload._id)].quantity--;
             return {
                 ...state,
+                ...sumItems(state.cartItems),
                 cartItems: [...state.cartItems],
             }
         case CHECKOUT:
@@ -69,20 +71,3 @@ const CartReducer = ( state, action) => {
     }
 }
 export default CartReducer
-
-
-
-
-
-
-// const CartReducer = ( state, action) => { 
-//     switch(action.type) {
-//         case ADD_TO_CART:
-//             if(!state.cartItems.find((item) => item.product._id === action.payload.product._id)) {
-//                 state.cartItems.push({
-//                     ...action.payload,
-//                     quantity:1
-//                 })
-//             }
-//     }
-// }
