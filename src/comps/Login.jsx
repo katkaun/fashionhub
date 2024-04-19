@@ -54,8 +54,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login template d-flex justify-content-center align-items-center vh-100 bg-primary">
-      <div className="form_container p-5 rounded bg-white">
+    <div className="login template d-flex justify-content-center align-items-center vh-100">
+      <div className="form_container p-5 rounded bg-white shadow-sm mb-4">
         <h3 className="text-center">Sign in</h3>
         {loginMessage && (
           <p className={`mb-2 ${loggedIn ? "text-success" : "text-danger"}`}>

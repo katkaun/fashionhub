@@ -53,8 +53,8 @@ const Registration = () => {
   };
 
   return (
-    <div className="signup template d-flex justify-content-center align-items-center vh-100 bg-primary">
-      <div className="form_container p-5 rounded bg-white">
+    <div className="signup template d-flex justify-content-center align-items-center vh-100">
+      <div className="form_container p-5 rounded bg-white shadow-sm mb-4">
         <h3 className="text-center">Sign Up</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-2">

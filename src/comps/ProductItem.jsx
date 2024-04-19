@@ -12,18 +12,18 @@ const ProductItem = ({ product }) => {
     }
 
     return (
-        <Card className="h-100">
+        <Card className="h-100 bg-white shadow-sm mb-4">
             <CardImg
                 variant="top"
+                src=""
                 style={{ objectFit: "cover", height: "300px" }}
             />
             <CardBody className="d-flex flex-column">
                 <div key={product._id} className="product">
                     <span className="text-muted">{product.brand}</span>
-                    <CardTitle className="d-flex justify-content-between align-items-baseline mb-2">
-                        {product.name}
-                    </CardTitle>
+                    <CardTitle className="mb-2">{product.name}</CardTitle>
                     <span className="text-sm">{product.description}</span>
+                    <div className="d-flex justify-content-between align-items-center mt-auto">
                     <span className="text-muted">{formatCurrency(product.price)}</span>
 
                     <Button
@@ -38,6 +38,7 @@ const ProductItem = ({ product }) => {
                     >
                         {isInCart(product) ? "Add More" : "Add to Cart"}
                     </Button>
+                    </div>
                 </div>
             </CardBody>
         </Card>
