@@ -1,82 +1,113 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../css/index.css";
 
 const Login = () => {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [loginMessage, setLoginMessage] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
-    const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-    const handleUserNameChange = (e) => {
-        setUserName(e.target.value);
-    }
+  const handleUserNameChange = (e) => {
+    setUserName(e.target.value);
+  };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-        try {
-            const response = await fetch('http://localhost:3000/v1/fashionhub/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: userName,
-                    password: password
-                }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                navigate('/');
-                setLoggedIn(true);
-
-            } else if (response.status === 400) {
-                setLoginMessage('Username or password is incorrect!')
-            } else {
-                console.error('Error');
-            }
-        } catch (error) {
-            console.error('Error:', error);
+    try {
+      const response = await fetch(
+        "http://localhost:3000/v1/fashionhub/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userName,
+            password: password,
+          }),
         }
-    }
+      );
 
-    return (
-        <div>
-            <h2>Login</h2>
-            {loginMessage && <p>{loginMessage}</p>}
-            {loggedIn && <p>Welcome, {userName}</p>}
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="userName">Username</label>
-                    <input
-                        type="text"
-                        id="userName"
-                        value={userName}
-                        onChange={handleUserNameChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password" 
-                        id="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
-                        autoComplete="off"
-                    />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    );
-}
+      if (response.ok) {
+        const data = await response.json();
+        setLoginMessage("Welcome " + userName + "! Redirecting to the store...");
+        setLoggedIn(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      } else if (response.status === 400) {
+        setLoggedIn(false),
+          setLoginMessage("Username or password is incorrect!");
+      } else {
+        console.error("Error");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  return (
+    <div className="login template d-flex justify-content-center align-items-center vh-100 bg-primary">
+      <div className="form_container p-5 rounded bg-white">
+        <h3 className="text-center">Sign in</h3>
+        {loginMessage && (
+          <p className={`mb-2 ${loggedIn ? "text-success" : "text-danger"}`}>
+            {loginMessage}
+          </p>
+        )}
+        <form onSubmit={handleLogin}>
+          <div className="mb-2">
+            <label htmlFor="email">Email</label>
+            <input
+              className="form-control"
+              id="email"
+              type="email"
+              placeholder="Email"
+              value={userName}
+              onChange={handleUserNameChange}
+              required
+            />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="password">Password</label>
+            <input
+              className="form-control"
+              id="password"
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+              autoComplete="off"
+            />
+          </div>
+          <div className="mb-2">
+            <input
+              type="checkbox"
+              className="custom-control custom-checkbox"
+              id="check"
+            />
+            <label htmlFor="check" className="custom-input-label ms-2">
+              Remember me
+            </label>
+          </div>
+          <div className="d-grid mt-2">
+            <button className="btn btn-primary">Login</button>
+          </div>
+          <p className="text-end mt-2">
+            <Link to="/registration">Sign up</Link>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default Login;

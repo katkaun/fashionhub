@@ -30,7 +30,7 @@ const Home = () => {
 
     return (
         <div>
-            <h2>Products</h2>
+            <h2>FashionHub</h2>
             {filtered.length > 0 ? (
                 <Row md={3} xs={2} lg={3} className="g-5"> 
                     {filtered.map(product => (

@@ -5,11 +5,11 @@ import CartContext from "../context/CartContext";
 
 
 const ProductItem = ({ product }) => {
-    const { addToCart, increase, cartItems, sumItems, itemCount } = useContext(CartContext);
+    const { addToCart, increase, cartItems } = useContext(CartContext);
 
     const isInCart = (product) => {
         return !!cartItems.find((item) => item.id === product._id)
-    };
+    }
 
     return (
         <Card className="h-100">
@@ -34,7 +34,7 @@ const ProductItem = ({ product }) => {
                                 addToCart(product);
                             }
                         }}
-                        className="btn btn-primary"
+                        className="bg-secondary"
                     >
                         {isInCart(product) ? "Add More" : "Add to Cart"}
                     </Button>

@@ -10,36 +10,42 @@ const CartItem = ({product}) => {
     const { removeFromCart, increase, decrease } = useContext(CartContext);
 
     return (
-        <Container>
-            <div>
+        <Container className="mb-3">
+        <div className="border-bottom py-3">
+          <div className="d-flex align-items-start justify-content-between">
+            <div className="me-3">
                 <h5>{product.name}</h5>
                 <p>{formatCurrency (product.price)}</p>
             </div> 
             
+            <div className="d-flex align-items-center">
             <Button onClick={() => increase(product)}
-            variant="primary"
+            variant="outline-secondary"
             size="sm"
-            className="mr-2 mb-1">
+            className="me-2 mb-1">
             +</Button>
 
-            <div>
-                <p>Qty: {product.quantity}</p>
+            <div className="me-2 mb-1">
+                <p className="mb-0">Qty: {product.quantity}</p>
             </div>
 
             {product.quantity > 1 && (
                 <Button onClick={() => decrease(product)}
-                variant="primary"
+                variant="outline-secondary"
                 size="sm"
-                className="mr-2 mb-1">
+                className="me-2 mb-1">
                 -</Button>
             )}
             {product.quantity === 1 && (
                 <Button onClick={() => removeFromCart(product)}
-                variant="primary"
+                variant="danger"
                 size="sm"
-                className="mr-2 mb-1">
-                </Button>
+                className="mb-1">
+                Remove</Button>
             )}
+                 </div>
+            </div>
+      </div>
        </Container>
     )
 }
