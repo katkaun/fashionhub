@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 import ProductItem from "../comps/ProductItem";
 import { Row, Col } from "react-bootstrap"
+import { SearchContext } from "../context/SearchContext";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
+    const {searchQuery} = useContext(SearchContext)
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -23,14 +25,21 @@ const Home = () => {
         fetchProducts();
     }, []);
 
+    const filtered = products.filter(product => product.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+
     return (
         <div>
             <h2>Products</h2>
-            <Row md={3} xs={2} lg={3} className="g-5"> 
-                {products.map(product => (
-                    <Col key={product._id}><ProductItem product={product} /></Col>
-                ))}
-            </Row>  
+            {filtered.length > 0 ? (
+                <Row md={3} xs={2} lg={3} className="g-5"> 
+                    {filtered.map(product => (
+                        <Col key={product._id}><ProductItem product={product} /></Col>
+                    ))}
+                </Row>
+            ) : (
+                <p>No products found.</p>
+            )}
         </div>
     );
 };
