@@ -3,58 +3,60 @@ import CartReducer from "./CartReducer";
 import CartContext from "./CartContext";
 import { sumItems } from "./CartReducer";
 
-const storage = localStorage.getItem("cartItems") 
-? JSON.parse(localStorage.getItem("cartItems")):[];
+const storage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
 
-const CartState = ({ children }) => {
+  const CartState = ({ children }) => {
     const initialState = {
-        cartItems: storage,
-        ...sumItems(storage),
-        checkout: false,
-        user: null,
+      cartItems: storage,
+      ...sumItems(storage),
+      checkout: false,
+      user: null,
     };
     const [state, dispatch] = useReducer(CartReducer, initialState);
-
+  
     const addToCart = (payload) => {
-        dispatch({ type: "ADD_TO_CART", payload});
+      dispatch({ type: "ADD_TO_CART", payload });
     };
-
+  
     const increase = (payload) => {
-        dispatch({ type: "INCREASE", payload});
+      dispatch({ type: "INCREASE", payload });
     };
-
+  
     const decrease = (payload) => {
-        dispatch({type: "DECREASE", payload});
+      dispatch({ type: "DECREASE", payload });
     };
-
+  
     const removeFromCart = (payload) => {
-        dispatch({type: "REMOVE_ITEM",payload});
+      dispatch({ type: "REMOVE_ITEM", payload });
     };
-
+  
     const clearCart = () => {
-        dispatch({type: "CLEAR"});
+      dispatch({ type: "CLEAR" });
     };
-
+  
     const handleCheckout = () => {
-        dispatch({type: "CHECKOUT"});
+      dispatch({ type: "CHECKOUT" });
     };
-
+  
     return (
-        <CartContext.Provider 
+      <CartContext.Provider
         value={{
-            showCart: state.showCart,
-            items: state.items,
-            addToCart,
-            removeFromCart,
-            increase,
-            decrease,
-            handleCheckout,
-            clearCart,
-            ...state,
-            }}>
-            {children}
-        </CartContext.Provider>
-    )
-}
-
+          cartItems: state.cartItems,
+          checkout: state.checkout,
+          user: state.user,
+          addToCart,
+          removeFromCart,
+          increase,
+          decrease,
+          handleCheckout,
+          clearCart,
+          ...sumItems(state.cartItems),
+        }}
+      >
+        {children}
+      </CartContext.Provider>
+    );
+  };
 export default CartState;

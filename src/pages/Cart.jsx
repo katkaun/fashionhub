@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Checkout from "../comps/Checkout";
 import CartItem from "../comps/CartItem";

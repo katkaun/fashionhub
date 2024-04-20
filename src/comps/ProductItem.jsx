@@ -8,7 +8,7 @@ const ProductItem = ({ product }) => {
     const { addToCart, increase, cartItems } = useContext(CartContext);
 
     const isInCart = (product) => {
-        return !!cartItems.find((item) => item.id === product._id)
+        return !!cartItems.find((item) => item._id === product._id)
     }
 
     return (
