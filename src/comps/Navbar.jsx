@@ -32,6 +32,11 @@ const Navbar = () => {
     updateSearchQuery("");
   };
 
+  const totalUniqueItems = cartItems.reduce(
+    (total, item) => (total += item.quantity),
+    0
+  );
+
   return (
     <BootstrapNavbar sticky="top" className="bg-white shadow-sm mb-4">
       <Container>
@@ -65,10 +70,10 @@ const Navbar = () => {
             className="d-flex align-items-center"
           >
             <ShoppingCart size={35} />
-            {cartItems.length > 0 && (
+            {totalUniqueItems > 0 && (
               <div className="position-relative">
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                  {cartItems.length}
+                  {totalUniqueItems}
                 </span>
               </div>
             )}
