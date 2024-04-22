@@ -58,12 +58,10 @@ const CartReducer = ( state, action) => {
             return {
                 cartItems:[],
                 checkout: true,
-                ...sumItems([]),
             }
         case CLEAR:
             return {
                 cartItems:[],
-                ...sumItems([]),
             };
 
         default:

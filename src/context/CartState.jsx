@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import CartReducer from "./CartReducer";
 import CartContext from "./CartContext";
 import { sumItems } from "./CartReducer";
@@ -8,10 +8,10 @@ const storage = localStorage.getItem("cartItems")
   : [];
 
   const CartState = ({ children }) => {
+    const [orderStatus, setOrderStatus] = useState(false)
+
     const initialState = {
       cartItems: storage,
-      ...sumItems(storage),
-      checkout: false,
       user: null,
     };
     const [state, dispatch] = useReducer(CartReducer, initialState);
@@ -53,6 +53,8 @@ const storage = localStorage.getItem("cartItems")
           handleCheckout,
           clearCart,
           ...sumItems(state.cartItems),
+          orderStatus,
+          setOrderStatus,
         }}
       >
         {children}
