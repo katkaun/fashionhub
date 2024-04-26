@@ -53,11 +53,11 @@ const Registration = () => {
   };
 
   return (
-    <div className="signup template d-flex justify-content-center align-items-center vh-100">
-      <div className="form_container p-5 rounded bg-white shadow-sm mb-4">
+    <div className="signup template d-flex justify-content-center align-items-center">
+      <div className="form_container p-5 rounded bg-white shadow-sm mb-3">
         <h3 className="text-center">Sign Up</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
+        <form onSubmit={handleSubmit} className="row g-3">
+          <div className="col-mb-6">
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -70,7 +70,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="email">Email</label>
             <input
               type="Email"
@@ -83,7 +83,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="password">Password</label>
             <input
               type="text"
@@ -96,7 +96,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="phone">Phone</label>
             <input
               type="text"
@@ -109,7 +109,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="address">Address</label>
             <input
               type="text"
@@ -122,7 +122,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="apartment">Apartment</label>
             <input
               type="text"
@@ -135,7 +135,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="city">City</label>
             <input
               type="text"
@@ -147,7 +147,7 @@ const Registration = () => {
               onChange={handleChange}
               required
             />{" "}</div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="zip">Zip</label>
             <input
               type="text"
@@ -160,7 +160,7 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="mb-2">
+          <div className="col-mb-6">
             <label htmlFor="country">Country</label>
             <input
               type="text"
@@ -173,13 +173,13 @@ const Registration = () => {
               required
             />{" "}
           </div>
-          <div className="d-grid">
+          <div className="d-grid mt-3">
             <button className="btn btn-primary">Register</button>
-            <p className="text-end mt-2">
+            <p className="text-end mt-3">
               Already registered 
               <Link to="/login"> Sign in</Link>
             </p>
-            <p className="text-success mb-2">{regMessage}</p>
+            <p className="text-success mb-0">{regMessage}</p>
           </div>
         </form>
       </div>

@@ -1,5 +1,5 @@
-/* .form_container {
-  width: 40%;
+.form_container {
+  width: 35%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -12,4 +12,4 @@
   .form_container {
     width: 65%;
   }
-} */
+}
