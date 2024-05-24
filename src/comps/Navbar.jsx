@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   const { updateSearchQuery } = useContext(SearchContext);
-  const navigate = useNavigate('');
+  const navigate = useNavigate("");
   const inputRef = useRef();
 
   const handleSearch = () => {

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
 import { Button } from "react-bootstrap";
-import { formatCurrency } from "../utilities/Currency";
+import { formatCurrency } from "../utils/Currency";
 
 const Checkout = () => {
   const { clearCart, itemCount, total, cartItems, setOrderStatus } =

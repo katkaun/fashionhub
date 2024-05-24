@@ -37,7 +37,9 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setLoginMessage("Welcome " + userName + "! Redirecting to the store...");
+        setLoginMessage(
+          "Welcome " + userName + "! Redirecting to the store..."
+        );
         setLoggedIn(true);
         setTimeout(() => {
           navigate("/");

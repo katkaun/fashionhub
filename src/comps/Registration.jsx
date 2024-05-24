@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import '../css/index.css'
+import "../css/index.css";
 
 const Registration = () => {
   const [userData, setUserData] = useState({
@@ -40,9 +40,11 @@ const Registration = () => {
         }
       );
       if (response.ok) {
-        setRegMessage("Registration successful! Redirecting you to the sign-in page...");
+        setRegMessage(
+          "Registration successful! Redirecting you to the sign-in page..."
+        );
         setTimeout(() => {
-            navigate("/login");
+          navigate("/login");
         }, 3000);
       } else {
         setRegMessage("Registration failed");
@@ -146,7 +148,8 @@ const Registration = () => {
               value={userData.city}
               onChange={handleChange}
               required
-            />{" "}</div>
+            />{" "}
+          </div>
           <div className="col-mb-6">
             <label htmlFor="zip">Zip</label>
             <input
@@ -176,7 +179,7 @@ const Registration = () => {
           <div className="d-grid mt-3">
             <button className="btn btn-primary">Register</button>
             <p className="text-end mt-3">
-              Already registered 
+              Already registered
               <Link to="/login"> Sign in</Link>
             </p>
             <p className="text-success mb-0">{regMessage}</p>

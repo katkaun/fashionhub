@@ -1,22 +1,23 @@
-import './css/index.css'
-import Switch from './Switch';
-import Navbar from './comps/Navbar';
-import { Container } from 'react-bootstrap';
-import CartState from './context/CartState';
-import SearchProvider from './context/SearchContext';
+import "./css/index.css";
+import Switch from "./Switch";
+import Navbar from "./comps/Navbar";
+import { Container } from "react-bootstrap";
+import CartProvider from "./context/CartProvider";
+import SearchProvider from "./context/SearchContext";
+import Footer from "./comps/Footer";
 
 function App() {
-
   return (
     <SearchProvider>
-      <CartState>
+      <CartProvider>
         <Navbar />
-          <Container className="mb-4">
+        <Container className="mb-4">
           <Switch />
         </Container>
-      </CartState> 
+        <Footer />
+      </CartProvider>
     </SearchProvider>
-  )
+  );
 }
 
-export default App
+export default App;
