@@ -5,7 +5,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { ShoppingCart } from "phosphor-react";
+import { ShoppingCart, User, HeartStraight } from "phosphor-react";
 import { useContext, useRef } from "react";
 import CartContext from "../context/CartContext";
 import { SearchContext } from "../context/SearchContext";
@@ -38,47 +38,43 @@ const Navbar = () => {
   );
 
   return (
-    <BootstrapNavbar sticky="top" className="bg-white shadow-sm mb-4">
-      <Container>
+    <BootstrapNavbar sticky="top" className="bg-white shadow-sm mb-5">
+      <Container className="mt-3">
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink} onClick={reset}>
-            Home
-          </Nav.Link>
-          <Nav.Link to="/login" as={NavLink}>
-            Login
-          </Nav.Link>
-          {/* <Nav.Link to="/registration" as={NavLink}>
-            Register
-          </Nav.Link> */}
-        </Nav>
-        <FormControl
-          ref={inputRef}
-          id="search-input"
-          style={{ width: 400 }}
-          placeholder="Search..."
-          className="me-3"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSearch();
-            }
-          }}
-        />
-        <Nav className="ms-auto">
-          <Nav.Link
-            to="/cart"
-            as={NavLink}
-            className="d-flex align-items-center"
-          >
-            <ShoppingCart size={35} />
-            {totalUniqueItems > 0 && (
-              <div className="position-relative">
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                  {totalUniqueItems}
-                </span>
-              </div>
-            )}
+            <h2>FashionHub</h2>
           </Nav.Link>
         </Nav>
+        <div className="d-flex justify-content-center align-items-center flex-grow-1">
+          <FormControl
+            ref={inputRef}
+            id="search-input"
+            style={{ width: 400 }}
+            placeholder="Search..."
+            className="me-3 rounded-pill"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
+          />
+        </div>
+        <Nav.Link to="/login" as={NavLink} className="me-2">
+          <User size={32} />
+        </Nav.Link>
+        <Nav.Link to="/favorites" as={NavLink} className="me-2">
+          <HeartStraight size={32} />
+        </Nav.Link>
+        <Nav.Link to="/cart" as={NavLink} className="d-flex align-items-center">
+          <ShoppingCart size={35} />
+          {totalUniqueItems > 0 && (
+            <div className="position-relative">
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                {totalUniqueItems}
+              </span>
+            </div>
+          )}
+        </Nav.Link>
       </Container>
     </BootstrapNavbar>
   );
