@@ -47,7 +47,7 @@ const CartItem = ({ product }) => {
             )}
 
             <div className="me-2 mb-1">
-              <p className="mb-0">Qty: {product.quantity}</p>
+              <p className="mb-0"> {product.quantity}</p>
             </div>
 
             <Button

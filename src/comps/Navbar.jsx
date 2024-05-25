@@ -42,7 +42,7 @@ const Navbar = () => {
       <Container className="mt-3">
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink} onClick={reset}>
-            <h2>FashionHub</h2>
+            <h2 className="text-black">FashionHub</h2>
           </Nav.Link>
         </Nav>
         <div className="d-flex justify-content-center align-items-center flex-grow-1">
