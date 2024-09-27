@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .form_container {
   width: 35%;
 }

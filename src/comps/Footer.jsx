@@ -1,19 +1,35 @@
 import styles from "../css/Footer.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.socialIcons}>
-        
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
       </div>
@@ -28,10 +44,11 @@ const Footer = () => {
         <a href="/terms-of-service">Terms of Service</a>
         <a href="/faq">FAQ</a>
       </div>
-      <p className={styles.copyright}>&copy; {new Date().getFullYear()} FashionHub. All Rights Reserved.</p>
+      <p className={styles.copyright}>
+        &copy; {new Date().getFullYear()} FashionHub. All Rights Reserved.
+      </p>
     </div>
-    
   );
 };
 
-export default Footer
+export default Footer;
